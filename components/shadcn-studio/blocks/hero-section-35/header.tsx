@@ -20,6 +20,14 @@ import { cn } from "@/lib/utils";
 import InkLogo from "@/assets/svg/ink-logo";
 import { ModeToggle } from "@/components/ModeToggle";
 
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+
 type HeaderProps = {
   navigationData: NavigationSection[];
   className?: string;
@@ -55,7 +63,9 @@ const Header = ({ navigationData, className }: HeaderProps) => {
         {/* Logo */}
         <a href="#" className="flex items-center gap-3">
           <InkLogo />
-          <span className="text-primary text-[20px] font-semibold">PATH PILOT</span>
+          <span className="text-primary text-[20px] font-semibold">
+            PATH PILOT
+          </span>
         </a>
 
         {/* Navigation */}
@@ -66,9 +76,18 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
         {/* Actions */}
         <div className="flex gap-4">
-          <Button variant="outline" className="max-sm:hidden" asChild>
-            <a href="#">Login</a>
-          </Button>
+          <SignedOut>
+            <Button variant="outline" className="max-sm:hidden" asChild>
+              <SignInButton />
+            </Button>
+            <Button variant="outline" className="max-sm:hidden" asChild>
+              <SignUpButton>Sign Up</SignUpButton>
+            </Button>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <ModeToggle />
 
           {/* Navigation for small screens */}
