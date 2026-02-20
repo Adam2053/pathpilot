@@ -6,10 +6,12 @@ import { PricingSection } from "@/components/pricing2";
 import TestimonialsComponentPage from "./testimonials-component-18/page";
 import FAQPage from "./faq-component-01/page";
 import FooterPage from "./footer-component-01/page";
+import SparklesPreview from "@/components/sparkles-demo";
 
 export default function Home() {
   return (
     <>
+
       <HeroSectionPage />
       <CTASection />
       <BlogSection />
